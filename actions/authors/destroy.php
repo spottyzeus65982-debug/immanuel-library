@@ -1,4 +1,5 @@
 <?php
+// hehe jimmy: ngehapus penulis, id-nya diambil dari link hapus
 if (isset($_GET['id'])) {
   echo "Penulis dengan id " . htmlspecialchars($_GET['id']) . " berhasil dihapus.";
 } else {

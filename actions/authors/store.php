@@ -1,4 +1,5 @@
 <?php
+// hehe jimmy: nyatet penulis baru, nama sama bio-nya dicek dulu
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['tambah_penulis'])) {
   echo "Akses tidak valid.";
   return;
