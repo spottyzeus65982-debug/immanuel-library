@@ -1,4 +1,5 @@
 <?php
+// hehe jimmy: daftarin akun baru, nama email sandi role dicek komplit
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['tambah_pengguna'])) {
   echo "Akses tidak valid.";
   return;
