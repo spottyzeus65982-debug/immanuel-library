@@ -1,5 +1,5 @@
 <?php
-// hehe jimmy: ngurusin revisi penulis, dicek id-nya kebawa apa nggak
+// ngurusin revisi penulis, dicek id-nya kebawa apa nggak
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_penulis'])) {
   echo "Akses tidak valid.";
   return;
