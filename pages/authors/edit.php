@@ -1,4 +1,4 @@
-<!-- hehe jimmy: form santai buat benerin penulis, datanya udah keisi -->
+<!-- form santai buat benerin penulis, datanya udah keisi -->
 <!DOCTYPE html>
 <html lang="id">
 
