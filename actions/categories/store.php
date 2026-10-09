@@ -1,4 +1,5 @@
 <?php
+// hehe jimmy: nampung nama kategori baru, kalau lengkap langsung dipajang
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['tambah_kategori'])) {
   echo "Akses tidak valid.";
   return;
