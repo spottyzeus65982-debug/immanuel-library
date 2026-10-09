@@ -1,5 +1,6 @@
 <?php
 
+// Deretkan contoh akun untuk tabel kelola akun.
 function getUsers() {
   return [
     ["id" => 1, "name" => "Admin Utama", "email" => "admin@ski.sch.id", "role" => "admin"],
@@ -9,10 +10,12 @@ function getUsers() {
   ];
 }
 
+// Angkat satu contoh akun untuk form ubah.
 function getUser() {
   return ["id" => 2, "name" => "Budi Santoso", "email" => "budi.santoso@siswa.ski.sch.id", "role" => "member"];
 }
 
+// Lengkapi contoh kontak & biodata untuk halaman profil.
 function getProfile() {
   return ["user_id" => 2, "phone" => "0812-3456-7890", "address" => "Jl. Merdeka No. 21, Pontianak, Kalimantan Barat", "bio" => "Murid kelas XI TKJ yang gemar membaca novel fiksi dan buku pengembangan diri."];
 }
