@@ -1,5 +1,5 @@
 <?php
-// hehe jimmy: ngurusin ganti data user, id sama role-nya dipastiin ada
+// ngurusin ganti data user, id sama role-nya dipastiin ada
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_pengguna'])) {
   echo "Akses tidak valid.";
   return;
