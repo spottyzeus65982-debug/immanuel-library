@@ -1,5 +1,5 @@
 <?php
-// hehe jimmy: ngurusin simpanan profil sendiri, kontak sama bio dicek
+// ngurusin simpanan profil sendiri, kontak sama bio dicek
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_profil'])) {
   echo "Akses tidak valid.";
   return;
