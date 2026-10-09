@@ -1,4 +1,4 @@
-<!-- hehe jimmy: mejeng tabel buku, bisa cari plus tombol tambah edit hapus -->
+<!-- mejeng tabel buku, bisa cari plus tombol tambah edit hapus -->
 <!DOCTYPE html>
 <html lang="id">
 

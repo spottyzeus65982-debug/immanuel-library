@@ -1,4 +1,4 @@
-<!-- hehe jimmy: nampilin detail satu buku biar enak dibaca -->
+<!-- nampilin detail satu buku biar enak dibaca -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

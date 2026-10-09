@@ -1,4 +1,4 @@
-<!-- hehe jimmy: form santai buat benerin buku, isinya kepilih otomatis -->
+<!-- form santai buat benerin buku, isinya kepilih otomatis -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
