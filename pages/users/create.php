@@ -1,4 +1,4 @@
-<!-- hehe jimmy: form santai buat bikin akun baru sama pilih role -->
+<!-- form santai buat bikin akun baru sama pilih role -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

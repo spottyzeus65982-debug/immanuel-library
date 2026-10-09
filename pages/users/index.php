@@ -1,4 +1,4 @@
-<!-- hehe jimmy: mejeng daftar akun, role-nya keliatan jelas -->
+<!-- mejeng daftar akun, role-nya keliatan jelas -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

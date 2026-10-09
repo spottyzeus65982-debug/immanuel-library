@@ -1,4 +1,4 @@
-<!-- hehe jimmy: form santai buat benerin akun, role bisa diganti -->
+<!-- form santai buat benerin akun, role bisa diganti -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
