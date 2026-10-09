@@ -1,29 +1,26 @@
-/* =============================================
-   COMPONENT: PAGINATION
-   Navigasi sederhana: tombol sebelumnya ( < ) & berikutnya ( > ) saja.
-   ============================================= */
+/* jimmy: pager prev next */
 
 .pagination {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   gap: 14px;
+  justify-content: center;
   padding: 16px 0 4px;
 }
 
 .pagination-btn {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
+  background-color: var(--card);
   border: 1px solid var(--line);
   border-radius: 3px;
-  background-color: var(--card);
   color: var(--ink);
+  display: inline-flex;
   font-family: var(--font-mono);
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 600;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
 }
 
 .pagination-btn:hover {
@@ -32,8 +29,8 @@
 }
 
 .pagination-btn.is-disabled {
-  color: var(--line);
   background-color: var(--card-alt);
+  color: var(--line);
   cursor: default;
   pointer-events: none;
 }

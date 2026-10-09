@@ -1,4 +1,4 @@
-<!-- mejeng daftar akun, role-nya keliatan jelas -->
+<!-- tabel akun + badge role -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,8 +9,9 @@
 </head>
 <body>
   <?php
-  require '../../repositories/user-repository.php';
-  $users = getUsers();
+  require_once __DIR__.'/../../repositories/user-repository.php';
+  $users = UserRepo::all();
+  $i = 0;
   ?>
   <div class="app-shell">
   <?php require '../../components/admin/sidebar.php'; ?>
@@ -41,15 +42,15 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($users as $user): ?>
+              <?php while ($i < count($users)): $user = $users[$i]; $i++; ?>
               <tr>
                 <td>
                   <div class="cell-primary">
                     <span class="cell-thumb"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 19.5v-1a4.5 4.5 0 0 0-4.5-4.5h-5A4.5 4.5 0 0 0 5 18.5v1"/><circle cx="12" cy="7.5" r="4"/></svg></span>
-                    <?= $user['name'] ?>
+                    <?= htmlspecialchars($user['name']) ?>
                   </div>
                 </td>
-                <td><?= $user['email'] ?></td>
+                <td><?= htmlspecialchars($user['email']) ?></td>
                 <td>
                   <?php if ($user['role'] === 'admin'): ?>
                     <span class="badge badge-admin">Admin</span>
@@ -59,12 +60,12 @@
                 </td>
                 <td>
                   <div class="cell-actions">
-                    <a href="edit.php?id=<?= $user['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="../../actions/users/destroy.php?id=<?= $user['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus pengguna ini?')">Hapus</a>
+                    <a href="edit.php?id=<?= htmlspecialchars($user['id']) ?>" class="btn btn-outline btn-sm">Edit</a>
+                    <a href="../../actions/users/destroy.php?id=<?= htmlspecialchars($user['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus pengguna ini?')">Hapus</a>
                   </div>
                 </td>
               </tr>
-              <?php endforeach; ?>
+              <?php endwhile; ?>
             </tbody>
           </table>
         </div>

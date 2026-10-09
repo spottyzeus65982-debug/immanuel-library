@@ -1,4 +1,4 @@
-<!-- nampilin detail satu buku biar enak dibaca -->
+<!-- detail satu buku, enak dibaca -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,8 +9,10 @@
 </head>
 <body>
   <?php
-  require '../../repositories/book-repository.php';
-  $book = getBook();
+  require_once __DIR__.'/../../repositories/book-repository.php';
+  $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+  if (!$id) $id = 5;
+  $book = BookRepo::one($id);
   ?>
   <div class="app-shell">
   <?php require '../../components/admin/sidebar.php'; ?>
@@ -22,35 +24,35 @@
         <div class="detail-grid">
           <div class="detail-cover"><svg class="icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
           <div class="detail-card">
-            <h1><?= $book['title'] ?></h1>
-            <p class="detail-meta">ISBN: <?= $book['isbn'] ?> &middot; Terbit <?= $book['year'] ?></p>
+            <h1><?= htmlspecialchars($book['title']) ?></h1>
+            <p class="detail-meta">ISBN: <?= htmlspecialchars($book['isbn']) ?> &middot; Terbit <?= htmlspecialchars($book['year']) ?></p>
 
             <div class="detail-row">
               <div class="detail-label">Kategori</div>
-              <div class="detail-value"><span class="badge badge-muted"><?= $book['category'] ?></span></div>
+              <div class="detail-value"><span class="badge badge-muted"><?= htmlspecialchars($book['category']) ?></span></div>
             </div>
             <div class="detail-row">
               <div class="detail-label">Penulis</div>
               <div class="detail-value">
                 <div class="chip-list">
-                  <?php foreach ($book['authors'] as $authorName): ?>
-                    <span class="chip"><?= $authorName ?></span>
-                  <?php endforeach; ?>
+                  <?php $i = 0; while ($i < count($book['authors'])): $authorName = $book['authors'][$i]; $i++; ?>
+                    <span class="chip"><?= htmlspecialchars($authorName) ?></span>
+                  <?php endwhile; ?>
                 </div>
               </div>
             </div>
             <div class="detail-row">
               <div class="detail-label">Stok Tersedia</div>
-              <div class="detail-value"><?= $book['stock'] ?> eksemplar</div>
+              <div class="detail-value"><?= htmlspecialchars($book['stock']) ?> eksemplar</div>
             </div>
             <div class="detail-row">
               <div class="detail-label">Deskripsi</div>
-              <div class="detail-value"><?= $book['description'] ?></div>
+              <div class="detail-value"><?= htmlspecialchars($book['description']) ?></div>
             </div>
 
             <div class="form-actions" style="border-top:none; padding-top:6px;">
               <a href="index.php" class="btn btn-outline">Kembali</a>
-              <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-primary">Edit Buku</a>
+              <a href="edit.php?id=<?= htmlspecialchars($book['id']) ?>" class="btn btn-primary">Edit Buku</a>
             </div>
           </div>
         </div>

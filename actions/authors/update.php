@@ -1,14 +1,12 @@
 <?php
-// ngurusin revisi penulis, dicek id-nya kebawa apa nggak
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_penulis'])) {
-  echo "Akses tidak valid.";
-  return;
-}
-if (isset($_POST['id'], $_POST['name'], $_POST['bio'])) {
-  echo "Perubahan penulis berhasil diterima:<br>";
-  echo "<pre>";
-  print_r(['id' => $_POST['id'], 'name' => $_POST['name'], 'bio' => $_POST['bio']]);
-  echo "</pre>";
-} else {
-  echo "Data penulis tidak lengkap.";
-}
+// edit author lama, pastikan id ada
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['update_author'])) { echo 'Akses tidak valid'; return; }
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+$name = filter_input(INPUT_POST, 'name');
+$bio = filter_input(INPUT_POST, 'bio');
+if (!$id || !$name || !$bio) { echo 'Data penulis tidak lengkap'; return; }
+echo 'Perubahan penulis berhasil diterima:<br>';
+echo '<pre>';
+print_r(['id' => $id, 'name' => $name, 'bio' => $bio]);
+echo '</pre>';
+echo '<br><a href="../../pages/authors/index.php">Kembali</a>';

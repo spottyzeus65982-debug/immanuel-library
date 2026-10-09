@@ -1,4 +1,4 @@
-<!-- form santai buat nambah buku, dropdown kategori penulis ikut -->
+<!-- tambah buku baru, pilih kategori + penulis -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,10 +9,10 @@
 </head>
 <body>
   <?php
-  require '../../repositories/category-repository.php';
-  require '../../repositories/author-repository.php';
-  $categories = getCategories();
-  $authors = getAuthors();
+  require_once __DIR__.'/../../repositories/category-repository.php';
+  require_once __DIR__.'/../../repositories/author-repository.php';
+  $categories = CategoryRepo::all();
+  $authors = AuthorRepo::all();
   ?>
   <div class="app-shell">
   <?php require '../../components/admin/sidebar.php'; ?>
@@ -46,9 +46,9 @@
               <div class="form-group">
                 <label for="category_id">Kategori</label>
                 <select id="category_id" name="category_id">
-                  <?php foreach ($categories as $category): ?>
-                    <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                  <?php endforeach; ?>
+                  <?php $i = 0; while ($i < count($categories)): $category = $categories[$i]; $i++; ?>
+                    <option value="<?= htmlspecialchars($category['id']) ?>"><?= htmlspecialchars($category['name']) ?></option>
+                  <?php endwhile; ?>
                 </select>
               </div>
             </div>
@@ -63,18 +63,18 @@
             <div class="form-group">
               <label>Pilih Penulis (bisa lebih dari satu)</label>
               <div class="checkbox-grid">
-                <?php foreach ($authors as $author): ?>
+                <?php $i = 0; while ($i < count($authors)): $author = $authors[$i]; $i++; ?>
                   <label class="checkbox-item">
-                    <input type="checkbox" name="author_ids[]" value="<?= $author['id'] ?>">
-                    <?= $author['name'] ?>
+                    <input type="checkbox" name="author_ids[]" value="<?= htmlspecialchars($author['id']) ?>">
+                    <?= htmlspecialchars($author['name']) ?>
                   </label>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
               </div>
             </div>
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" name="tambah_buku" class="btn btn-primary">Simpan Buku</button>
+              <button type="submit" name="add_book" class="btn btn-primary">Simpan Buku</button>
             </div>
           </div>
         </form>

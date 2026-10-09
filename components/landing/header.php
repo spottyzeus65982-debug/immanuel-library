@@ -1,4 +1,4 @@
-<!-- kepala landing santai, isinya logo menu sama tombol masuk -->
+<!-- landing nav, logo + menu + auth buttons -->
 <header>
   <nav class="navbar">
     <a href="/index.php" class="brand">

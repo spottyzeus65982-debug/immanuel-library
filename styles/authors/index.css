@@ -1,6 +1,6 @@
-/* Halaman: Manajemen Penulis (daftar) */
-@import url('../base.css');
-@import url('../components/sidebar.css');
-@import url('../components/header.css');
-@import url('../components/pagination.css');
+/* jimmy: author list imports */
 @import url('../pages/management.css');
+@import url('../components/pagination.css');
+@import url('../components/sidebar.css');
+@import url('../base.css');
+@import url('../components/header.css');

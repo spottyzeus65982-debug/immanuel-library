@@ -1,4 +1,4 @@
-/* Halaman: Landing (index.php) */
-@import url('base.css');
+/* jimmy: landing home imports */
 @import url('components/footer.css');
 @import url('pages/landing.css');
+@import url('base.css');

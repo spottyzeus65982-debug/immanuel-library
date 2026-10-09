@@ -1,14 +1,13 @@
 <?php
-// ngurusin ganti data user, id sama role-nya dipastiin ada
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_pengguna'])) {
-  echo "Akses tidak valid.";
-  return;
-}
-if (isset($_POST['id'], $_POST['name'], $_POST['email'], $_POST['role'])) {
-  echo "Perubahan pengguna berhasil diterima:<br>";
-  echo "<pre>";
-  print_r(['id' => $_POST['id'], 'name' => $_POST['name'], 'email' => $_POST['email'], 'role' => $_POST['role']]);
-  echo "</pre>";
-} else {
-  echo "Data pengguna tidak lengkap.";
-}
+// update user + role check
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['update_user'])) { echo 'Akses tidak valid'; return; }
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+$name = filter_input(INPUT_POST, 'name');
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+$role = filter_input(INPUT_POST, 'role');
+if (!$id || !$name || !$email || !$role) { echo 'Data pengguna tidak lengkap'; return; }
+echo 'Perubahan pengguna berhasil diterima:<br>';
+echo '<pre>';
+print_r(['id' => $id, 'name' => $name, 'email' => $email, 'role' => $role]);
+echo '</pre>';
+echo '<br><a href="../../pages/users/index.php">Kembali</a>';

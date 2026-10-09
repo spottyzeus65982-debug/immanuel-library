@@ -1,4 +1,4 @@
-<!-- form santai buat benerin akun, role bisa diganti -->
+<!-- edit akun, role ganti -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,8 +9,10 @@
 </head>
 <body>
   <?php
-  require '../../repositories/user-repository.php';
-  $user = getUser();
+  require_once __DIR__.'/../../repositories/user-repository.php';
+  $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+  if (!$id) $id = 2;
+  $user = UserRepo::one($id);
   ?>
   <div class="app-shell">
   <?php require '../../components/admin/sidebar.php'; ?>
@@ -20,17 +22,17 @@
 
       <div class="app-content">
         <form method="POST" action="../../actions/users/update.php">
-          <input type="hidden" name="id" value="<?= $user['id'] ?>">
+          <input type="hidden" name="id" value="<?= htmlspecialchars($user['id']) ?>">
           <div class="form-card">
             <div class="form-section-title">Data Pengguna</div>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Nama Lengkap</label>
-                <input type="text" id="name" name="name" value="<?= $user['name'] ?>">
+                <input type="text" id="name" name="name" value="<?= htmlspecialchars($user['name']) ?>">
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?= $user['email'] ?>">
+                <input type="email" id="email" name="email" value="<?= htmlspecialchars($user['email']) ?>">
               </div>
             </div>
             <div class="form-group">
@@ -43,7 +45,7 @@
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" name="ubah_pengguna" class="btn btn-primary">Simpan Perubahan</button>
+              <button type="submit" name="update_user" class="btn btn-primary">Simpan Perubahan</button>
             </div>
           </div>
         </form>

@@ -1,24 +1,18 @@
 <?php
-// ngurusin hasil editan buku, id plus fieldnya dicek baru dipamerin
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_buku'])) {
-  echo "Akses tidak valid.";
-  return;
-}
-if (isset($_POST['id'], $_POST['title'], $_POST['isbn'], $_POST['year'], $_POST['stock'], $_POST['category_id'], $_POST['description'])) {
-  $data = [
-    'id' => $_POST['id'],
-    'title' => $_POST['title'],
-    'isbn' => $_POST['isbn'],
-    'year' => $_POST['year'],
-    'stock' => $_POST['stock'],
-    'category_id' => $_POST['category_id'],
-    'description' => $_POST['description'],
-    'author_ids' => isset($_POST['author_ids']) ? $_POST['author_ids'] : [],
-  ];
-  echo "Perubahan buku berhasil diterima:<br>";
-  echo "<pre>";
-  print_r($data);
-  echo "</pre>";
-} else {
-  echo "Data buku tidak lengkap.";
-}
+// update book data, id plus field wajib ada
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['update_book'])) { echo 'Akses tidak valid'; return; }
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+$title = filter_input(INPUT_POST, 'title');
+$isbn = filter_input(INPUT_POST, 'isbn');
+$year = filter_input(INPUT_POST, 'year', FILTER_VALIDATE_INT);
+$stock = filter_input(INPUT_POST, 'stock', FILTER_VALIDATE_INT);
+$category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
+$description = filter_input(INPUT_POST, 'description');
+$author_ids = filter_input(INPUT_POST, 'author_ids', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+if (!$id || !$title || !$isbn || !$year || !$stock || !$category_id || !$description) { echo 'Data buku tidak lengkap'; return; }
+$data = ['id' => $id, 'title' => $title, 'isbn' => $isbn, 'year' => $year, 'stock' => $stock, 'category_id' => $category_id, 'description' => $description, 'author_ids' => $author_ids ? $author_ids : []];
+echo 'Perubahan buku berhasil diterima:<br>';
+echo '<pre>';
+print_r($data);
+echo '</pre>';
+echo '<br><a href="../../pages/books/index.php">Kembali</a>';

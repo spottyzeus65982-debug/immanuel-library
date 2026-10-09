@@ -1,4 +1,4 @@
-<!-- form santai buat benerin kategori, id-nya disimpen diam-diam -->
+<!-- benerin kategori, id hidden -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,8 +9,10 @@
 </head>
 <body>
   <?php
-  require '../../repositories/category-repository.php';
-  $category = getCategory();
+  require_once __DIR__.'/../../repositories/category-repository.php';
+  $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+  if (!$id) $id = 1;
+  $category = CategoryRepo::one($id);
   ?>
   <div class="app-shell">
   <?php require '../../components/admin/sidebar.php'; ?>
@@ -20,21 +22,21 @@
 
       <div class="app-content">
         <form method="POST" action="../../actions/categories/update.php">
-          <input type="hidden" name="id" value="<?= $category['id'] ?>">
+          <input type="hidden" name="id" value="<?= htmlspecialchars($category['id']) ?>">
           <div class="form-card">
             <div class="form-section-title">Data Kategori</div>
             <div class="form-group">
               <label for="name">Nama Kategori</label>
-              <input type="text" id="name" name="name" value="<?= $category['name'] ?>">
+              <input type="text" id="name" name="name" value="<?= htmlspecialchars($category['name']) ?>">
             </div>
             <div class="form-group">
               <label for="description">Deskripsi</label>
-              <textarea id="description" name="description" rows="3"><?= $category['description'] ?></textarea>
+              <textarea id="description" name="description" rows="3"><?= htmlspecialchars($category['description']) ?></textarea>
             </div>
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" name="ubah_kategori" class="btn btn-primary">Simpan Perubahan</button>
+              <button type="submit" name="update_category" class="btn btn-primary">Simpan Perubahan</button>
             </div>
           </div>
         </form>

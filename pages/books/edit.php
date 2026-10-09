@@ -1,4 +1,4 @@
-<!-- form santai buat benerin buku, isinya kepilih otomatis -->
+<!-- edit buku lama, field keisi otomatis -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,12 +9,14 @@
 </head>
 <body>
   <?php
-  require '../../repositories/book-repository.php';
-  require '../../repositories/category-repository.php';
-  require '../../repositories/author-repository.php';
-  $book = getBook();
-  $categories = getCategories();
-  $authors = getAuthors();
+  require_once __DIR__.'/../../repositories/book-repository.php';
+  require_once __DIR__.'/../../repositories/category-repository.php';
+  require_once __DIR__.'/../../repositories/author-repository.php';
+  $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+  if (!$id) $id = 5;
+  $book = BookRepo::one($id);
+  $categories = CategoryRepo::all();
+  $authors = AuthorRepo::all();
   ?>
   <div class="app-shell">
   <?php require '../../components/admin/sidebar.php'; ?>
@@ -24,40 +26,40 @@
 
       <div class="app-content">
         <form method="POST" action="../../actions/books/update.php">
-          <input type="hidden" name="id" value="<?= $book['id'] ?>">
+          <input type="hidden" name="id" value="<?= htmlspecialchars($book['id']) ?>">
           <div class="form-card" style="margin-bottom:20px;">
             <div class="form-section-title">Data Buku</div>
             <div class="form-group">
               <label for="title">Judul Buku</label>
-              <input type="text" id="title" name="title" value="<?= $book['title'] ?>">
+              <input type="text" id="title" name="title" value="<?= htmlspecialchars($book['title']) ?>">
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="isbn">ISBN</label>
-                <input type="text" id="isbn" name="isbn" value="<?= $book['isbn'] ?>">
+                <input type="text" id="isbn" name="isbn" value="<?= htmlspecialchars($book['isbn']) ?>">
               </div>
               <div class="form-group">
                 <label for="year">Tahun Terbit</label>
-                <input type="number" id="year" name="year" value="<?= $book['year'] ?>">
+                <input type="number" id="year" name="year" value="<?= htmlspecialchars($book['year']) ?>">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="stock">Jumlah Stok</label>
-                <input type="number" id="stock" name="stock" value="<?= $book['stock'] ?>">
+                <input type="number" id="stock" name="stock" value="<?= htmlspecialchars($book['stock']) ?>">
               </div>
               <div class="form-group">
                 <label for="category_id">Kategori</label>
                 <select id="category_id" name="category_id">
-                  <?php foreach ($categories as $category): ?>
-                    <option value="<?= $category['id'] ?>" <?= $category['id'] === $book['category_id'] ? 'selected' : '' ?>><?= $category['name'] ?></option>
-                  <?php endforeach; ?>
+                  <?php $i = 0; while ($i < count($categories)): $category = $categories[$i]; $i++; ?>
+                    <option value="<?= htmlspecialchars($category['id']) ?>" <?= $category['id'] === $book['category_id'] ? 'selected' : '' ?>><?= htmlspecialchars($category['name']) ?></option>
+                  <?php endwhile; ?>
                 </select>
               </div>
             </div>
             <div class="form-group">
               <label for="description">Deskripsi</label>
-              <textarea id="description" name="description" rows="3"><?= $book['description'] ?></textarea>
+              <textarea id="description" name="description" rows="3"><?= htmlspecialchars($book['description']) ?></textarea>
             </div>
           </div>
 
@@ -66,18 +68,18 @@
             <div class="form-group">
               <label>Pilih Penulis (bisa lebih dari satu)</label>
               <div class="checkbox-grid">
-                <?php foreach ($authors as $author): ?>
+                <?php $i = 0; while ($i < count($authors)): $author = $authors[$i]; $i++; ?>
                   <label class="checkbox-item">
-                    <input type="checkbox" name="author_ids[]" value="<?= $author['id'] ?>" <?= in_array($author['id'], $book['author_ids']) ? 'checked' : '' ?>>
-                    <?= $author['name'] ?>
+                    <input type="checkbox" name="author_ids[]" value="<?= htmlspecialchars($author['id']) ?>" <?= in_array($author['id'], $book['author_ids'], true) ? 'checked' : '' ?>>
+                    <?= htmlspecialchars($author['name']) ?>
                   </label>
-                <?php endforeach; ?>
+                <?php endwhile; ?>
               </div>
             </div>
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" name="ubah_buku" class="btn btn-primary">Simpan Perubahan</button>
+              <button type="submit" name="update_book" class="btn btn-primary">Simpan Perubahan</button>
             </div>
           </div>
         </form>

@@ -1,4 +1,4 @@
-<!-- beranda santai buat nyambut, ada hero statistik sama fitur -->
+<!-- landing welcome, hero stats + features -->
 <!DOCTYPE html>
 <html lang="id">
 

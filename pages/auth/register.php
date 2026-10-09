@@ -1,4 +1,4 @@
-<!-- form santai buat daftar akun baru pertama kali -->
+<!-- register form, akun newbie -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

@@ -1,7 +1,6 @@
 <?php
-// ngehapus penulis, id-nya diambil dari link hapus
-if (isset($_GET['id'])) {
-  echo "Penulis dengan id " . htmlspecialchars($_GET['id']) . " berhasil dihapus.";
-} else {
-  echo "ID penulis tidak ditemukan.";
-}
+// remove author pakai id link
+$id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+if (!$id) { echo 'ID penulis tidak ditemukan.'; return; }
+echo 'Penulis dengan id ' . htmlspecialchars($id) . ' berhasil dihapus.';
+echo '<br><a href="../../pages/authors/index.php">Kembali</a>';

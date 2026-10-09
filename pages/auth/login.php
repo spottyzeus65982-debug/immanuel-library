@@ -1,4 +1,4 @@
-<!-- pintu masuk santai, tinggal ketik email sama sandi -->
+<!-- login gate, email + pass only -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

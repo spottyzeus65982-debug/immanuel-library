@@ -1,4 +1,4 @@
-<!-- bar atas santai, judulnya ngikutin halaman yang dibuka -->
+<!-- top strip, title ikut $pageTitle tiap page -->
 <header class="app-topbar">
   <div class="page-title">
     <h1><?= isset($pageTitle) ? $pageTitle : 'Immanuel Library' ?></h1>

@@ -1,4 +1,4 @@
-<!-- panel kiri biar pindah halaman gampang, linknya disatuin di sini -->
+<!-- admin side nav, link cepat ke semua modul -->
 <aside class="app-sidebar">
   <div class="brand">
     <span class="logo-badge">PD</span>

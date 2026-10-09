@@ -1,4 +1,4 @@
-<!-- mejeng tabel buku, bisa cari plus tombol tambah edit hapus -->
+<!-- book table list, cari + kelola cepat -->
 <!DOCTYPE html>
 <html lang="id">
 
@@ -11,8 +11,9 @@
 
 <body>
   <?php
-  require '../../repositories/book-repository.php';
-  $books = getBooks();
+  require_once __DIR__.'/../../repositories/book-repository.php';
+  $books = BookRepo::all();
+  $i = 0;
   ?>
   <div class="app-shell">
     <?php require '../../components/admin/sidebar.php'; ?>
@@ -55,7 +56,7 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($books as $book): ?>
+              <?php while ($i < count($books)): $book = $books[$i]; $i++; ?>
               <tr>
                 <td>
                   <div class="cell-primary">
@@ -64,26 +65,26 @@
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
                       </svg></span>
-                    <a href="show.php?id=<?= $book['id'] ?>" style="color:inherit;"><?= $book['title'] ?></a>
+                    <a href="show.php?id=<?= htmlspecialchars($book['id']) ?>" style="color:inherit;"><?= htmlspecialchars($book['title']) ?></a>
                   </div>
                 </td>
-                <td><span class="badge badge-muted"><?= $book['category'] ?></span></td>
+                <td><span class="badge badge-muted"><?= htmlspecialchars($book['category']) ?></span></td>
                 <td>
                   <div class="chip-list">
-                    <?php foreach ((array) $book['authors'] as $authorName): ?>
-                    <span class="chip"><?= $authorName ?></span>
-                    <?php endforeach; ?>
+                    <?php $j = 0; while ($j < count($book['authors'])): $authorName = $book['authors'][$j]; $j++; ?>
+                    <span class="chip"><?= htmlspecialchars($authorName) ?></span>
+                    <?php endwhile; ?>
                   </div>
                 </td>
-                <td><?= $book['stock'] ?></td>
+                <td><?= htmlspecialchars($book['stock']) ?></td>
                 <td>
                   <div class="cell-actions">
-                    <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus buku ini?')">Hapus</a>
+                    <a href="edit.php?id=<?= htmlspecialchars($book['id']) ?>" class="btn btn-outline btn-sm">Edit</a>
+                    <a href="../../actions/books/destroy.php?id=<?= htmlspecialchars($book['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus buku ini?')">Hapus</a>
                   </div>
                 </td>
               </tr>
-              <?php endforeach; ?>
+              <?php endwhile; ?>
             </tbody>
           </table>
         </div>

@@ -1,14 +1,11 @@
 <?php
-// nyatet penulis baru, nama sama bio-nya dicek dulu
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['tambah_penulis'])) {
-  echo "Akses tidak valid.";
-  return;
-}
-if (isset($_POST['name'], $_POST['bio'])) {
-  echo "Penulis baru berhasil diterima:<br>";
-  echo "<pre>";
-  print_r(['name' => $_POST['name'], 'bio' => $_POST['bio']]);
-  echo "</pre>";
-} else {
-  echo "Data penulis tidak lengkap.";
-}
+// tambah author baru, name bio wajib isi
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['add_author'])) { echo 'Akses tidak valid'; return; }
+$name = filter_input(INPUT_POST, 'name');
+$bio = filter_input(INPUT_POST, 'bio');
+if (!$name || !$bio) { echo 'Data penulis tidak lengkap'; return; }
+echo 'Penulis baru berhasil diterima:<br>';
+echo '<pre>';
+print_r(['name' => $name, 'bio' => $bio]);
+echo '</pre>';
+echo '<br><a href="../../pages/authors/index.php">Kembali</a>';

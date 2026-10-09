@@ -1,14 +1,12 @@
 <?php
-// ngurusin editan kategori, id-nya dicek biar nyambung
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_kategori'])) {
-  echo "Akses tidak valid.";
-  return;
-}
-if (isset($_POST['id'], $_POST['name'], $_POST['description'])) {
-  echo "Perubahan kategori berhasil diterima:<br>";
-  echo "<pre>";
-  print_r(['id' => $_POST['id'], 'name' => $_POST['name'], 'description' => $_POST['description']]);
-  echo "</pre>";
-} else {
-  echo "Data kategori tidak lengkap.";
-}
+// revisi category, id ikut validasi
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['update_category'])) { echo 'Akses tidak valid'; return; }
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
+$name = filter_input(INPUT_POST, 'name');
+$description = filter_input(INPUT_POST, 'description');
+if (!$id || !$name || !$description) { echo 'Data kategori tidak lengkap'; return; }
+echo 'Perubahan kategori berhasil diterima:<br>';
+echo '<pre>';
+print_r(['id' => $id, 'name' => $name, 'description' => $description]);
+echo '</pre>';
+echo '<br><a href="../../pages/categories/index.php">Kembali</a>';

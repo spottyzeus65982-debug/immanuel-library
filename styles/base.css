@@ -1,49 +1,43 @@
-/* =============================================
-   BASE
-   Dipakai oleh SEMUA halaman: reset, token warna/font,
-   elemen dasar, tombol, dan badge.
-   ============================================= */
-
+/* jimmy: base tokens buttons badges */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --paper: #F5F2E7;
-  --paper-dim: #EFEBDC;
   --card: #FFFDF8;
   --card-alt: #F7F4EA;
+  --cloth: #2F5D50;
+  --cloth-deep: #1F4038;
+  --font-body: 'IBM Plex Sans', Arial, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --ink: #20241E;
   --ink-soft: #66695A;
   --line: #DCD5BE;
-  --cloth: #2F5D50;
-  --cloth-deep: #1F4038;
-  --tan: #E8DEC2;
-  --tan-ink: #6B5934;
-  --stamp: #A6402F;
-  --stamp-soft: #F3E1D8;
+  --paper: #F5F2E7;
+  --paper-dim: #EFEBDC;
   --sidebar: #1B231D;
   --sidebar-line: #313A32;
-
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'IBM Plex Sans', Arial, sans-serif;
-  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --stamp: #A6402F;
+  --stamp-soft: #F3E1D8;
+  --tan: #E8DEC2;
+  --tan-ink: #6B5934;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font-family: var(--font-body);
   background-color: var(--paper);
   color: var(--ink);
+  font-family: var(--font-body);
   line-height: 1.6;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
 ul {
@@ -51,50 +45,48 @@ ul {
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 button {
-  font-family: inherit;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .icon {
-  vertical-align: middle;
   flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .label {
   font-family: var(--font-mono);
-  text-transform: uppercase;
   letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-/* Logo: bentuk kartu katalog dengan sudut terpotong (seperti kartu fisik) */
 .logo-badge {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 70%);
+  display: flex;
   font-family: var(--font-mono);
   font-style: normal;
   font-weight: 600;
+  justify-content: center;
   letter-spacing: 0.02em;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%, 0 70%);
 }
 
-/* ===== BUTTONS ===== */
 .btn {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 20px;
+  border: 1px solid transparent;
   border-radius: 4px;
+  display: inline-flex;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
-  border: 1px solid transparent;
+  gap: 8px;
+  justify-content: center;
+  padding: 10px 20px;
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
@@ -109,8 +101,8 @@ button {
 
 .btn-outline {
   background-color: transparent;
-  color: var(--cloth);
   border: 1px solid var(--cloth);
+  color: var(--cloth);
 }
 
 .btn-outline:hover {
@@ -119,8 +111,8 @@ button {
 
 .btn-danger {
   background-color: transparent;
-  color: var(--stamp);
   border: 1px solid #DCB3A7;
+  color: var(--stamp);
 }
 
 .btn-danger:hover {
@@ -128,57 +120,52 @@ button {
 }
 
 .btn-sm {
-  padding: 6px 13px;
   font-size: 13px;
+  padding: 6px 13px;
 }
 
 .btn-block {
   width: 100%;
 }
 
-.btn:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
+.btn:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--cloth);
   outline-offset: 2px;
 }
 
-/* ===== BADGE (gaya stempel kartu katalog) ===== */
 .badge {
-  display: inline-block;
-  padding: 3px 10px;
+  border: 1px solid transparent;
   border-radius: 2px;
+  display: inline-block;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
-  border: 1px solid transparent;
+  padding: 3px 10px;
+  text-transform: uppercase;
   transform: rotate(-1.5deg);
 }
 
 .badge-admin {
   background-color: var(--stamp-soft);
-  color: var(--stamp);
   border-color: #E3B7A9;
+  color: var(--stamp);
 }
 
 .badge-member {
   background-color: var(--card-alt);
-  color: var(--cloth-deep);
   border-color: var(--line);
+  color: var(--cloth-deep);
 }
 
 .badge-success {
   background-color: #E7EFE1;
-  color: #3C6B2E;
   border-color: #C7D8BB;
+  color: #3C6B2E;
 }
 
 .badge-muted {
   background-color: var(--tan);
-  color: var(--tan-ink);
   border-color: #D8CBA2;
+  color: var(--tan-ink);
 }

@@ -1,4 +1,4 @@
-<!-- mejeng daftar penulis, gampang cari sama kelola -->
+<!-- list penulis + cari cepat -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,8 +9,9 @@
 </head>
 <body>
   <?php
-  require '../../repositories/author-repository.php';
-  $authors = getAuthors();
+  require_once __DIR__.'/../../repositories/author-repository.php';
+  $authors = AuthorRepo::all();
+  $i = 0;
   ?>
   <div class="app-shell">
   <?php require '../../components/admin/sidebar.php'; ?>
@@ -40,23 +41,23 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($authors as $author): ?>
+              <?php while ($i < count($authors)): $author = $authors[$i]; $i++; ?>
               <tr>
                 <td>
                   <div class="cell-primary">
                     <span class="cell-thumb"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span>
-                    <?= $author['name'] ?>
+                    <?= htmlspecialchars($author['name']) ?>
                   </div>
                 </td>
-                <td><span class="badge badge-muted"><?= $author['total_books'] ?> buku</span></td>
+                <td><span class="badge badge-muted"><?= htmlspecialchars($author['total_books']) ?> buku</span></td>
                 <td>
                   <div class="cell-actions">
-                    <a href="edit.php?id=<?= $author['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="../../actions/authors/destroy.php?id=<?= $author['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus penulis ini?')">Hapus</a>
+                    <a href="edit.php?id=<?= htmlspecialchars($author['id']) ?>" class="btn btn-outline btn-sm">Edit</a>
+                    <a href="../../actions/authors/destroy.php?id=<?= htmlspecialchars($author['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Hapus penulis ini?')">Hapus</a>
                   </div>
                 </td>
               </tr>
-              <?php endforeach; ?>
+              <?php endwhile; ?>
             </tbody>
           </table>
         </div>

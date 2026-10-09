@@ -1,7 +1,4 @@
-/* =============================================
-   COMPONENT: SIDEBAR
-   Dipakai di semua halaman manajemen (app-shell + sidebar kiri).
-   ============================================= */
+/* jimmy: admin side nav */
 
 .app-shell {
   display: flex;
@@ -9,64 +6,63 @@
 }
 
 .app-sidebar {
-  width: 226px;
   background-color: var(--sidebar);
   color: #ffffff;
-  padding: 22px 16px;
   flex-shrink: 0;
+  padding: 22px 16px;
+  width: 226px;
 }
 
 .app-sidebar .brand {
-  display: flex;
   align-items: center;
-  gap: 10px;
+  border-bottom: 1px solid var(--sidebar-line);
+  display: flex;
   font-family: var(--font-display);
+  font-size: 16px;
   font-style: italic;
   font-weight: 600;
-  font-size: 16px;
-  padding-bottom: 18px;
+  gap: 10px;
   margin-bottom: 14px;
-  border-bottom: 1px solid var(--sidebar-line);
+  padding-bottom: 18px;
 }
 
 .app-sidebar .brand .logo-badge {
-  width: 30px;
-  height: 30px;
-  font-size: 11px;
   background-color: var(--tan);
   color: var(--cloth-deep);
+  font-size: 11px;
+  height: 30px;
+  width: 30px;
 }
 
 .app-sidebar nav a {
-  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
   border-left: 3px solid transparent;
+  color: #AFB8AC;
+  display: flex;
   font-size: 13.5px;
   font-weight: 500;
-  color: #AFB8AC;
+  gap: 10px;
+  padding: 10px 12px;
 }
 
-.app-sidebar nav a.active,
-.app-sidebar nav a:hover {
-  border-left-color: var(--tan);
+.app-sidebar nav a.active, .app-sidebar nav a:hover {
   background-color: rgba(255, 255, 255, 0.05);
+  border-left-color: var(--tan);
   color: #ffffff;
 }
 
 .app-sidebar .nav-group-label {
+  color: #74806F;
   font-family: var(--font-mono);
   font-size: 10.5px;
-  text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #74806F;
   margin: 20px 0 8px 12px;
+  text-transform: uppercase;
 }
 
 .app-main {
-  flex: 1;
   background-color: var(--paper);
+  flex: 1;
   min-width: 0;
 }
 

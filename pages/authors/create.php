@@ -1,4 +1,4 @@
-<!-- form santai buat nambah penulis baru -->
+<!-- tambah penulis anyar -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -28,7 +28,7 @@
             </div>
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" name="tambah_penulis" class="btn btn-primary">Simpan Penulis</button>
+              <button type="submit" name="add_author" class="btn btn-primary">Simpan Penulis</button>
             </div>
           </div>
         </form>

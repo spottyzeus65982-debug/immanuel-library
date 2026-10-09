@@ -1,14 +1,13 @@
 <?php
-// daftarin akun baru, nama email sandi role dicek komplit
-if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['tambah_pengguna'])) {
-  echo "Akses tidak valid.";
-  return;
-}
-if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['role'])) {
-  echo "Pengguna baru berhasil diterima:<br>";
-  echo "<pre>";
-  print_r(['name' => $_POST['name'], 'email' => $_POST['email'], 'password' => $_POST['password'], 'role' => $_POST['role']]);
-  echo "</pre>";
-} else {
-  echo "Data pengguna tidak lengkap.";
-}
+// register user baru plus role
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['add_user'])) { echo 'Akses tidak valid'; return; }
+$name = filter_input(INPUT_POST, 'name');
+$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+$password = filter_input(INPUT_POST, 'password');
+$role = filter_input(INPUT_POST, 'role');
+if (!$name || !$email || !$password || !$role) { echo 'Data pengguna tidak lengkap'; return; }
+echo 'Pengguna baru berhasil diterima:<br>';
+echo '<pre>';
+print_r(['name' => $name, 'email' => $email, 'password' => $password, 'role' => $role]);
+echo '</pre>';
+echo '<br><a href="../../pages/users/index.php">Kembali</a>';

@@ -1,10 +1,7 @@
 Refleksi Landing Page - Immanuel Library (Bagian 1)
 
-1. Apa keuntungan memisahkan header dan footer menjadi file component tersendiri,
-dibandingkan menuliskannya langsung berulang-ulang di index.php?
-Jawaban: Kalau header dan footer dipisah jadi component, perawatan jadi jauh lebih ringan karena perbaikan cukup dilakukan sekali di components/landing/header.php atau footer.php. Saya tidak perlu lagi membuka index.php dan membetulkan potongan yang sama berulang-ulang. Risiko ada halaman yang lupa ikut diperbarui pun hilang. Index.php akhirnya hanya berisi konten khas beranda saja.
+1. Mengapa header dan footer ditempatkan sebagai komponen terpisah, bukan ditulis berulang pada index.php?
+Jawaban: Pemisahan tersebut memusatkan markup bersama pada components/landing/header.php dan footer.php, sehingga revisi cukup dikerjakan pada satu lokasi. Duplikasi antarhalaman berkurang, konsistensi tampilan terjaga, dan index.php berfokus hanya pada muatan beranda.
 
-2. Perhatikan halaman-halaman admin (Buku, Kategori, Penulis, Pengguna, Profil) pada
-Bagian 2 - bagian mana pada halaman-halaman tersebut yang mengalami masalah yang sama
-seperti header/footer sebelum dipisah?
-Jawaban: Masalah yang sama ada pada sidebar (elemen aside menu navigasi) dan topbar (elemen header judul halaman) yang disalin ke 14 file halaman admin. Setiap ganti menu harus diulang di semua file, persis seperti header/footer dulu. Solusinya sama, pindahkan ke components/admin/sidebar.php dan components/admin/topbar.php lalu panggil dengan require. Karena tiap halaman judulnya beda, topbar memakai variabel $pageTitle dan $pageSubtitle yang diisi sebelum require.
+2. Pada halaman admin (Buku, Kategori, Penulis, Pengguna, Profil) di Bagian 2, segmen mana yang menghadapi persoalan serupa seperti header/footer sebelum diekstraksi?
+Jawaban: Segmen tersebut ialah sidebar (navigasi samping) beserta topbar (kepala judul laman) yang tersebar pada 14 berkas admin. Tiap penyesuaian menu menuntut pengulangan di seluruh berkas. Penanganannya seragam, yakni memindahkannya menuju components/admin/sidebar.php serta components/admin/topbar.php kemudian memuatnya melalui require. Mengingat judul tiap laman bervariasi, topbar membaca variabel $pageTitle dan $pageSubtitle yang ditetapkan sebelum pemanggilan.
