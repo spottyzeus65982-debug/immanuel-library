@@ -1,5 +1,5 @@
 <?php
-// hehe jimmy: ngurusin editan kategori, id-nya dicek biar nyambung
+// ngurusin editan kategori, id-nya dicek biar nyambung
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_kategori'])) {
   echo "Akses tidak valid.";
   return;
