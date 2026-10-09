@@ -1,4 +1,4 @@
-<!-- hehe jimmy: mejeng daftar kategori, ada cari sama tombol kelola -->
+<!-- mejeng daftar kategori, ada cari sama tombol kelola -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

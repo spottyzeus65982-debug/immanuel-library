@@ -1,4 +1,4 @@
-<!-- hehe jimmy: form santai buat benerin kategori, id-nya disimpen diam-diam -->
+<!-- form santai buat benerin kategori, id-nya disimpen diam-diam -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
