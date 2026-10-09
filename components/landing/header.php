@@ -1,4 +1,4 @@
-<!-- hehe jimmy: kepala landing santai, isinya logo menu sama tombol masuk -->
+<!-- kepala landing santai, isinya logo menu sama tombol masuk -->
 <header>
   <nav class="navbar">
     <a href="/index.php" class="brand">
