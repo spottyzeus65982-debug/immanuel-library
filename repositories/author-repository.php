@@ -1,5 +1,6 @@
 <?php
 
+// Kumpulkan contoh nama penulis untuk centang pilihan.
 function getAuthors() {
   return [
     ["id" => 1, "name" => "Andrea Hirata", "bio" => "Penulis asal Belitung, dikenal lewat novel Laskar Pelangi.", "total_books" => 1],
@@ -10,6 +11,7 @@ function getAuthors() {
   ];
 }
 
+// Pilih satu contoh penulis untuk form ubah.
 function getAuthor() {
   return ["id" => 1, "name" => "Andrea Hirata", "bio" => "Penulis asal Belitung, dikenal lewat novel Laskar Pelangi.", "total_books" => 1];
 }
