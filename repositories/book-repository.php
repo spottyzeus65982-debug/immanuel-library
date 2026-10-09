@@ -1,5 +1,6 @@
 <?php
 
+// Rakit contoh deretan buku untuk tabel katalog TP 4.
 function getBooks() {
   return [
     ["id" => 1, "title" => "Laskar Pelangi", "category" => "Fiksi", "year" => 2005, "stock" => 12, "authors" => ["Andrea Hirata"]],
@@ -10,6 +11,7 @@ function getBooks() {
   ];
 }
 
+// Ambil satu contoh buku untuk layar detail/ubah.
 function getBook() {
   return [
     "id" => 5,
