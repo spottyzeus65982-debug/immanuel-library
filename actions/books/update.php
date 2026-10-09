@@ -1,4 +1,5 @@
 <?php
+// hehe jimmy: ngurusin hasil editan buku, id plus fieldnya dicek baru dipamerin
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['ubah_buku'])) {
   echo "Akses tidak valid.";
   return;

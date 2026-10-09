@@ -1,4 +1,5 @@
 <?php
+// santai jimmy: nampung kiriman form tambah buku, dicek lengkap dulu baru dipajang balik
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['tambah_buku'])) {
   echo "Akses tidak valid.";
   return;
