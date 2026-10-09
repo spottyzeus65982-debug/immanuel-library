@@ -1,5 +1,6 @@
 <?php
 
+// Susun contoh daftar kategori untuk pilihan isian.
 function getCategories() {
   return [
     ["id" => 1, "name" => "Fiksi", "description" => "Novel dan cerita rekaan", "total_books" => 3],
@@ -9,6 +10,7 @@ function getCategories() {
   ];
 }
 
+// Tunjuk satu contoh kategori untuk form ubah.
 function getCategory() {
   return ["id" => 1, "name" => "Fiksi", "description" => "Novel dan cerita rekaan", "total_books" => 3];
 }
