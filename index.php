@@ -1,3 +1,4 @@
+<!-- hehe jimmy: beranda santai buat nyambut, ada hero statistik sama fitur -->
 <!DOCTYPE html>
 <html lang="id">
 

@@ -1,3 +1,4 @@
+<!-- hehe jimmy: form santai buat daftar akun baru pertama kali -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

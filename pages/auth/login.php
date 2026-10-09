@@ -1,3 +1,4 @@
+<!-- hehe jimmy: pintu masuk santai, tinggal ketik email sama sandi -->
 <!DOCTYPE html>
 <html lang="id">
 <head>

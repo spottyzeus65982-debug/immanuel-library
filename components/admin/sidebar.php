@@ -1,3 +1,4 @@
+<!-- hehe jimmy: panel kiri biar pindah halaman gampang, linknya disatuin di sini -->
 <aside class="app-sidebar">
   <div class="brand">
     <span class="logo-badge">PD</span>
